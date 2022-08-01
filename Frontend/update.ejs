@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @media(min-width:280px){
+            
+            *{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            
+        }
+        body{
+            margin:0;
+            
+        }
+        input{
+             height: 40px;
+            width:100%;
+            border:3px solid black;
+        }
+        h3{
+            text-align: center;
+            
+        }
+        .foot{
+            width: 50%;
+            margin: 0 25%;
+        }
+        .btn{
+            width:50%;
+        }
+        .btn button{
+            color:aliceblue;
+            border:none;
+            background-color: chartreuse;
+            width: 100%;
+            margin-top: 10%;
+            height: 50px;
+        }
+        select{
+            height: 40px;
+            width:50%;
+            border:3px solid black;
+        }
+        span{
+            color: red;
+        }
+        textarea{
+            height: 50px;
+            width:50%;
+            border:3px solid black;
+        }
+        #demo{
+            color: red;
+        }
+
+        }
+        header{
+            background-color: rgb(145, 53, 232);
+            display: flex;
+            justify-content:space-between;
+            align-items:center;
+            padding: 0 2rem;
+        }
+        h1{
+            color:white;
+        }
+        nav a{
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+
+        }
+        h3{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MyBlog</h1>
+        <nav>
+            <a href="/allpost">All Post</a>
+            <a href="/create">Create Post</a>
+        </nav>
+    </header>
+
+    <h3> Update post</h3>
+    <form action="/edit/<%=post._id%>/updated" method="POST">
+        <div class="foot">
+            <p><span>*</span>Title</p>
+            <input type="text"  class="user-field" name="title" value="<%=post.title%>">
+            
+            <p><span>*</span>Summary</p>
+            <input type="text"  class="user-field" name="summary" value="<%=post.summary%>">
+    
+            <p><span>*</span>Post content</p>
+            <textarea name="content" id="" cols="30" rows="10" placeholder="Text here" value="<%=post.content%>"></textarea>
+        
+            <div class="btn">
+                <button>Update post</button>
+            </div>
+        </div>
+    </form>
+   
+
+   
+</body>
+</html>

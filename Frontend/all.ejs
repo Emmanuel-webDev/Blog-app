@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header{
+            background-color: rgb(145, 53, 232);
+            display: flex;
+            justify-content:space-between;
+            align-items:center;
+            padding: 0 2rem;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            color:white;
+        }
+        nav a{
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+
+        }
+        h2, p, a{
+            text-align: center;
+        }
+        a{
+            color:rgb(145, 53, 232);
+        text-decoration: none;
+        cursor: pointer;
+        
+        }
+       
+        .pst-item{
+            width: 50%;
+            background-color: #999;
+            display: grid;
+            justify-content: center;
+            padding: 2% 0%;
+            box-shadow: 2px 3px #333;
+            border-radius: 7px;
+            margin: 3% 25%;
+        }
+        .errmessage{
+            width: 100%;
+            display: grid;
+            justify-content: center;
+        }
+        p{
+            color: white;
+        }
+        .pst-item h2{
+            color:white;
+        }
+        .sub{
+            background-color:rgb(98, 9, 98);
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+        <header>
+            <h1>MyBlog</h1>
+            <nav>
+                <a href="/allpost">All Post</a>
+                <a href="/create">Create Post</a>
+            </nav>
+        </header>
+
+    <main>
+
+        <h2>All Post</h2>
+        <% if (!posts || posts.length===0){ %>
+            <article class="errmessage">
+                <h2>No post yet! - maybe start creating some?</h2>
+                <a href="/create">Create a new post</a>
+            </article>
+          
+       <% } else { %>
+             <ol>
+                 <% for (const post of posts) { %>
+                    <li>
+                      <article class="pst-item">
+                            <h2><%= post.title %></h2>
+                            <p class="pst-auth">By <%= post.author.name %></p>
+                            <p><%= post.summary %></p>
+    
+                            <div class="pst-action">
+                                <form action="/del/<%=post._id%>", method="POST">
+                                    <button class="btn">Delete</button>
+                                </form>
+                                
+                                <a href="/edit/<%=post._id%>">Edit Post</a>
+                                <a href="/post-details/<%= post._id %>" class="sub">View post</a>
+                            </div>
+
+                        </article>
+                       
+
+                    </li>
+
+                <% } %>
+             </ol>
+        <% } %>
+    </main>
+</html>
